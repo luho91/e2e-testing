@@ -9,10 +9,3 @@ ddev_version_constraint: '>= v1.24.3'
 post_install_actions:
   - 'echo "Docker image successfully installed. Run \`ddev auth ssh\` before \`ddev restart\`"'
 
-post_start:
-  - name: Clone private repo if not present
-    exec_host: true
-    command: |
-      ddev exec bash -c 'if [ ! -d /var/www/html/e2e-testing ]; then
-        git clone git@gitlab.vcat.de:vcat/e2e-testing.git /var/www/html/e2e-testing
-      fi'
