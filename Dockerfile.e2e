@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/playwright:v1.49.0-jammy
 # optional tools:
 RUN apt-get update && apt-get install -y jq git curl && rm -rf /var/lib/apt/lists/*
-
+ENV PLAYWRIGHT_BROWSERS_PATH=/var/www/html/.cache/ms-playwright
+RUN mkdir -p /var/www/html/.cache/ms-playwright && chmod -R 0777 /var/www/html/.cache
