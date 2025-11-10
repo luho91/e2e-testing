@@ -1,8 +1,4 @@
-FROM alpine:latest
+FROM mcr.microsoft.com/playwright:v1.49.0-jammy
+# optional tools:
+RUN apt-get update && apt-get install -y jq git curl && rm -rf /var/lib/apt/lists/*
 
-# Make sure we have an image with fundamental utilities in it
-# base64 is already in alpine.
-# perl-utils provides shasum
-# We get perl with perl-utils
-RUN apk update && apk add --no-cache bash curl jq perl-utils wget yq openssh npm git
-CMD [ "bash" ]
