@@ -5,12 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.e2e
-    command: tail -f /dev/null
-    restart: "no"
-    # These labels ensure this service is discoverable by DDEV.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: ${DDEV_APPROOT}
-
+    command: tail -f /dev/null
+    working_dir: /var/www/html
+    restart: "no"
+    # These labels ensure this service is discoverable by DDEV.
     volumes:
-      - ".:/var/www/html"
+      - "${DDEV_APPROOT}/e2e-testing:/var/www/html"
+    x-ddev:
+      ssh-shell: bash

@@ -1,7 +1,9 @@
+# config.e2e-testing.yaml
 hooks:
-  post-start:
-    - exec: |
-        if [ ! -f /var/www/html/.e2e_cloned ]; then
-          git clone git@gitlab.vcat.de:vcat/e2e-testing.git /var/www/html/e2e-testing && \
-          touch /var/www/html/.e2e_cloned
+  pre-start:
+    - exec-host: |
+        if [ ! -f ${DDEV_APPROOT}/.e2e_cloned ]; then
+          git clone git@gitlab.vcat.de:vcat/e2e-testing.git ${DDEV_APPROOT}/e2e-testing && \
+          touch ${DDEV_APPROOT}/.e2e_cloned
         fi
+

@@ -8,5 +8,5 @@ project_files:
 ddev_version_constraint: '>= v1.24.3'
 
 post_install_actions:
-  - 'echo "Docker image successfully installed. Run \`ddev auth ssh\` before \`ddev restart\`"'
+  - 'echo "Docker image successfully installed. Your host needs access to the e2e-testing GitLab repository before you \`ddev restart\`."'
 
